@@ -3,6 +3,7 @@ package xmlrpc
 import (
 	"bytes"
 	"crypto/tls"
+	"fmt"
 	"net/http"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,7 @@ func (c *Client) Call(name string, args ...interface{}) (interface{}, error) {
 	if err := Marshal(req, name, args...); err != nil {
 		return nil, errors.Wrap(err, "failed to marshal request")
 	}
+	fmt.Printf("req %s\n", req)
 	resp, err := c.httpClient.Post(c.addr, "text/xml", req)
 	if err != nil {
 		return nil, errors.Wrap(err, "POST failed")
