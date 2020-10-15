@@ -115,7 +115,7 @@ func (r *RTorrent) GetTorrent(t Torrent) (Torrent, error) {
 				ret.State = d[7].(int)
 				ret.PeersConnected = d[8].(int)
 				ret.Name = d[9].(string)
-				ret.Path = d[9].(string)
+				ret.Path = d[10].(string)
 
 				return ret, nil
 			}
