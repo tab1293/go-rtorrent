@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/mrobinsn/go-rtorrent/rtorrent"
 	"github.com/pkg/errors"
+	"github.com/tab1293/go-rtorrent/rtorrent"
 	"github.com/urfave/cli"
 )
 

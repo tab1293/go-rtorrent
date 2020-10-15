@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/mrobinsn/go-rtorrent/xmlrpc"
 	"github.com/pkg/errors"
+	"github.com/tab1293/go-rtorrent/xmlrpc"
 )
 
 // RTorrent is used to communicate with a remote rTorrent instance

@@ -1,15 +1,15 @@
 # go-rtorrent
-[![GoDoc](https://godoc.org/github.com/mrobinsn/go-rtorrent/rtorrent?status.svg)](https://godoc.org/github.com/mrobinsn/go-rtorrent/rtorrent)
-[![Go Report Card](https://goreportcard.com/badge/github.com/mrobinsn/go-rtorrent)](https://goreportcard.com/report/github.com/mrobinsn/go-rtorrent)
-[![Build Status](https://travis-ci.org/mrobinsn/go-rtorrent.svg?branch=master)](https://travis-ci.org/mrobinsn/go-rtorrent)
-[![Coverage Status](https://coveralls.io/repos/github/mrobinsn/go-rtorrent/badge.svg?branch=master)](https://coveralls.io/github/mrobinsn/go-rtorrent?branch=master)
+[![GoDoc](https://godoc.org/github.com/tab1293/go-rtorrent/rtorrent?status.svg)](https://godoc.org/github.com/tab1293/go-rtorrent/rtorrent)
+[![Go Report Card](https://goreportcard.com/badge/github.com/tab1293/go-rtorrent)](https://goreportcard.com/report/github.com/tab1293/go-rtorrent)
+[![Build Status](https://travis-ci.org/tab1293/go-rtorrent.svg?branch=master)](https://travis-ci.org/tab1293/go-rtorrent)
+[![Coverage Status](https://coveralls.io/repos/github/tab1293/go-rtorrent/badge.svg?branch=master)](https://coveralls.io/github/tab1293/go-rtorrent?branch=master)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 
 > rTorrent XMLRPC Bindings for Go (golang)
 
 ## Documentation
-[GoDoc](https://godoc.org/github.com/mrobinsn/go-rtorrent/rtorrent)
+[GoDoc](https://godoc.org/github.com/tab1293/go-rtorrent/rtorrent)
 
 ## Features
 - Get IP, Name, Up/Down totals
@@ -21,11 +21,11 @@
 - Delete a torrent (including files)
 
 ## Installation
-To install the package, run `go get github.com/mrobinsn/go-rtorrent`
+To install the package, run `go get github.com/tab1293/go-rtorrent`
 
-To use it in application, import `"github.com/mrobinsn/go-rtorrent/rtorrent"`
+To use it in application, import `"github.com/tab1293/go-rtorrent/rtorrent"`
 
-To install the command line utility, run `go install "github.com/mrobinsn/go-rtorrent"`
+To install the command line utility, run `go install "github.com/tab1293/go-rtorrent"`
 
 ## Library Usage
 
