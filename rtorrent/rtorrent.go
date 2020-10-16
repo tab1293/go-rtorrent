@@ -32,7 +32,7 @@ type Torrent struct {
 	PeersComplete     int
 	PeersAccounted    int
 	Hashing           int
-	ChunkSize         int64
+	ChunkSize         int
 }
 
 // File represents a file in rTorrent
@@ -122,7 +122,7 @@ func (r *RTorrent) GetTorrent(t Torrent) (Torrent, error) {
 				ret.Name = d[9].(string)
 				ret.Path = d[10].(string)
 				ret.Hashing = d[11].(int)
-				ret.ChunkSize = d[12].(int64)
+				ret.ChunkSize = d[12].(int)
 				ret.PeersNotConnected = d[13].(int)
 				ret.PeersAccounted = d[14].(int)
 				ret.PeersComplete = d[15].(int)
