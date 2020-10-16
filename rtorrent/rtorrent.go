@@ -17,19 +17,22 @@ type RTorrent struct {
 
 // Torrent represents a torrent in rTorrent
 type Torrent struct {
-	Hash           string
-	Name           string
-	Path           string
-	Size           int
-	Completed      bool
-	CompletedBytes int
-	Ratio          float64
-	State          int
-	DownRate       int
-	UpRate         int
-	PeersConnected int
-	Hashing        int
-	ChunkSize      int64
+	Hash              string
+	Name              string
+	Path              string
+	Size              int
+	Completed         bool
+	CompletedBytes    int
+	Ratio             float64
+	State             int
+	DownRate          int
+	UpRate            int
+	PeersConnected    int
+	PeersNotConnected int
+	PeersComplete     int
+	PeersAccounted    int
+	Hashing           int
+	ChunkSize         int64
 }
 
 // File represents a file in rTorrent
@@ -97,7 +100,7 @@ func (r *RTorrent) Shutdown() error {
 // GetTorrent returns the torrent identified by the given hash
 func (r *RTorrent) GetTorrent(t Torrent) (Torrent, error) {
 	var ret Torrent
-	args := []interface{}{"", string(ViewMain), "d.hash=", "d.complete=", "d.completed_bytes=", "d.down.rate=", "d.up.rate=", "d.ratio=", "d.size_bytes=", "d.state=", "d.peers_connected=", "d.name=", "d.base_path=", "d.hashing=", "d.chunk_size="}
+	args := []interface{}{"", string(ViewMain), "d.hash=", "d.complete=", "d.completed_bytes=", "d.down.rate=", "d.up.rate=", "d.ratio=", "d.size_bytes=", "d.state=", "d.peers_connected=", "d.name=", "d.base_path=", "d.hashing=", "d.chunk_size=", "d.peers_not_connected=", "d.peers_accounted=", "d.peers_complete="}
 	results, err := r.xmlrpcClient.Call("d.multicall2", args...)
 	if err != nil {
 		return ret, err
@@ -120,6 +123,9 @@ func (r *RTorrent) GetTorrent(t Torrent) (Torrent, error) {
 				ret.Path = d[10].(string)
 				ret.Hashing = d[11].(int)
 				ret.ChunkSize = d[12].(int64)
+				ret.PeersNotConnected = d[13].(int)
+				ret.PeersAccounted = d[14].(int)
+				ret.PeersComplete = d[15].(int)
 				return ret, nil
 			}
 		}
