@@ -98,6 +98,14 @@ func (r *RTorrent) Shutdown() error {
 	return nil
 }
 
+func (r *RTorrent) SetDefaultDirectory(d string) error {
+	_, err := r.xmlrpcClient.Call("directory.default.set", d)
+	if err != nil {
+		return errors.Wrap(err, "directory.default.set XMLRPC call failed")
+	}
+	return nil
+}
+
 // GetTorrent returns the torrent identified by the given hash
 func (r *RTorrent) GetTorrent(t Torrent) (Torrent, error) {
 	var ret Torrent
