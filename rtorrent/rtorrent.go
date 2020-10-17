@@ -99,6 +99,7 @@ func (r *RTorrent) Shutdown() error {
 }
 
 func (r *RTorrent) SetSessionDirectory(d string) error {
+	fmt.Printf("setting session path: %s\n", d)
 	_, err := r.xmlrpcClient.Call("session.path.set", d)
 	if err != nil {
 		return errors.Wrap(err, "session.path.set XMLRPC call failed")
