@@ -98,10 +98,11 @@ func (r *RTorrent) Shutdown() error {
 	return nil
 }
 
-func (r *RTorrent) SetDefaultDirectory(d string) error {
-	_, err := r.xmlrpcClient.Call("directory.default.set", d)
+func (r *RTorrent) SetDefaultDirectory(t Torrent, d string) error {
+	fmt.Printf("setting default directory: %s\n", d)
+	_, err := r.xmlrpcClient.Call("d.directory.set", t.Hash, d)
 	if err != nil {
-		return errors.Wrap(err, "directory.default.set XMLRPC call failed")
+		return errors.Wrap(err, "d.start XMLRPC call failed")
 	}
 	return nil
 }
