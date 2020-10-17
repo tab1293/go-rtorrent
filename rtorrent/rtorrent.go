@@ -33,6 +33,7 @@ type Torrent struct {
 	PeersAccounted    int
 	Hashing           int
 	ChunkSize         int
+	IsMultiFile       bool
 }
 
 // File represents a file in rTorrent
@@ -100,7 +101,7 @@ func (r *RTorrent) Shutdown() error {
 // GetTorrent returns the torrent identified by the given hash
 func (r *RTorrent) GetTorrent(t Torrent) (Torrent, error) {
 	var ret Torrent
-	args := []interface{}{"", string(ViewMain), "d.hash=", "d.complete=", "d.completed_bytes=", "d.down.rate=", "d.up.rate=", "d.ratio=", "d.size_bytes=", "d.state=", "d.peers_connected=", "d.name=", "d.base_path=", "d.hashing=", "d.chunk_size=", "d.peers_not_connected=", "d.peers_accounted=", "d.peers_complete="}
+	args := []interface{}{"", string(ViewMain), "d.hash=", "d.complete=", "d.completed_bytes=", "d.down.rate=", "d.up.rate=", "d.ratio=", "d.size_bytes=", "d.state=", "d.peers_connected=", "d.name=", "d.base_path=", "d.hashing=", "d.chunk_size=", "d.peers_not_connected=", "d.peers_accounted=", "d.peers_complete=", "d.is_multi_file="}
 	results, err := r.xmlrpcClient.Call("d.multicall2", args...)
 	if err != nil {
 		return ret, err
@@ -126,6 +127,7 @@ func (r *RTorrent) GetTorrent(t Torrent) (Torrent, error) {
 				ret.PeersNotConnected = d[13].(int)
 				ret.PeersAccounted = d[14].(int)
 				ret.PeersComplete = d[15].(int)
+				ret.IsMultiFile = d[16].(int) > 0
 				return ret, nil
 			}
 		}
